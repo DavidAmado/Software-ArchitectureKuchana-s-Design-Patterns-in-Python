@@ -1,5 +1,5 @@
 import asyncio
-# Inicio herarquia de clases Logger
+# Beginning of Logger hierarchy
 class Logger:
     """ Intarface Logger."""
     def log(self, msg: str) -> None:
@@ -38,4 +38,4 @@ class ConsoleLogger(Logger):
         async with lock:
             print(msg)
 
-# Fin herarquia de clases Logger
+# End of Logger hierarchy
