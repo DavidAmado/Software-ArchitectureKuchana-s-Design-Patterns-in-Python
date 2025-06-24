@@ -1,6 +1,4 @@
-import json
 import asyncio
-
 # Inicio herarquia de clases Logger
 class Logger:
     """ Intarface Logger."""
@@ -41,31 +39,3 @@ class ConsoleLogger(Logger):
             print(msg)
 
 # Fin herarquia de clases Logger
-
-# Logger Factory
-class LoggerFactory:
-    def isFileLoggingEnabled(self):
-        try:
-            with open('./paremeters.json') as f:
-                properties = json.load(f)
-                print("properties",properties)
-            if properties["FileLogging"].upper()=="ON":
-                return (True)
-        except:
-            print("Excepcion con el archivo")
-        return (False)
-    def getLogger(self) -> Logger:
-        if self.isFileLoggingEnabled():
-            return(FileLogger())
-        return(ConsoleLogger())
-async def main():
-    factory = LoggerFactory()
-    logger = factory.getLogger()
-    task1 = asyncio.create_task(logger.log("A Message to Log1\n")) 
-    task2 = asyncio.create_task(logger.log("A Message to Log2\n"))
-    task3 = asyncio.create_task(logger.log("A Message to Log3\n"))
-    await task1
-    await task2
-    await task3
-
-asyncio.run(main())

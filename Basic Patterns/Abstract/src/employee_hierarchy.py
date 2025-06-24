@@ -1,9 +1,9 @@
 from abc import ABC, abstractmethod
 
 class Employee(ABC):
-    def __init__(self, name, ID):
-        self._name = name
+    def __init__(self, ID, name):
         self._ID = ID
+        self._name = name
 
     def __repr__(self):
         return("Emp Name:: "+self._name+" Emp ID:: "+str(self._ID))
@@ -17,24 +17,13 @@ class Employee(ABC):
         pass
 
 class Consultant(Employee):
-    def __init__(self, name, ID):
-        super().__init__(name, ID)
+    def __init__(self, ID, name):
+        super().__init__(ID, name)
     def computeCompensation(self):
         return("consultant salary is this")
 
 class SalesRep(Employee):
-    def __init__(self, name, ID):
-        super().__init__(name, ID)
+    def __init__(self, ID, name):
+        super().__init__(ID, name)
     def computeCompensation(self):
         return("SalesRep salary is that")
-
-
-def main():
-    c=Consultant("Pedro", 1)
-    print(c)
-    print(c.computeCompensation())
-    s=SalesRep("Pablo", 2)
-    print(s)
-    print(s.computeCompensation())
-
-main()
