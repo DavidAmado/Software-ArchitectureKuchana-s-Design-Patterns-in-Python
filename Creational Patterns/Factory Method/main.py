@@ -1,4 +1,4 @@
-from src.factory import LoggerFactory
+from src.logger_factory import LoggerFactory
 
 if __name__ == "__main__":
     factory = LoggerFactory()
